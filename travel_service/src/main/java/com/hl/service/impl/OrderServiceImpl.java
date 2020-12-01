@@ -27,4 +27,9 @@ public class OrderServiceImpl implements OrderService {
         PageInfo<Order> pageInfo = new PageInfo<>(all);
         return pageInfo;
     }
+
+    @Override
+    public Order findById(Integer id) {
+        return orderDao.findById(id);
+    }
 }

@@ -28,6 +28,14 @@ public class OrderController {
         mv.setViewName("order-list");
         return mv;
     }
+
+    @RequestMapping("findById.do")
+    public ModelAndView findById(Integer id){
+        Order order = orderService.findById(id);
+        ModelAndView mv = new ModelAndView("order-show");
+        mv.addObject("order", order);
+        return mv;
+    }
     /*未分页
      @GetMapping("findAll.do")
     public ModelAndView findAll(){
