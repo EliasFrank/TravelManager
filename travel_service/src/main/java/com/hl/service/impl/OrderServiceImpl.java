@@ -1,5 +1,7 @@
 package com.hl.service.impl;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.hl.dao.OrderDao;
 import com.hl.domain.Order;
 import com.hl.service.OrderService;
@@ -19,8 +21,10 @@ public class OrderServiceImpl implements OrderService {
     private OrderDao orderDao;
 
     @Override
-    public List<Order> findAll() {
+    public PageInfo<Order> findAll(Integer page, Integer size) {
+        PageHelper.startPage(page, size);
         List<Order> all = orderDao.findAll();
-        return all;
+        PageInfo<Order> pageInfo = new PageInfo<>(all);
+        return pageInfo;
     }
 }

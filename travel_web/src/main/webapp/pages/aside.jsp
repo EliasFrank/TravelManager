@@ -35,36 +35,28 @@
 
                 <ul class="treeview-menu">
                     <li id="system-setting1">
-                        <security:authorize access="hasRole('ADMIN')">
                             <a
                                     href="${pageContext.request.contextPath}/user/findAll.do?page=1&size=5"> <i
                                     class="fa fa-circle-o"></i> 用户管理
                             </a>
-                        </security:authorize>
                     </li>
                     <li id="system-setting2">
-                        <security:authorize access="hasRole('ADMIN')">
                             <a
                                     href="${pageContext.request.contextPath}/role/findAll.do?page=1&size=5"> <i
                                     class="fa fa-circle-o"></i> 角色管理
                             </a>
-                        </security:authorize>
                     </li>
                     <li id="system-setting3">
-                        <security:authorize access="hasRole('ADMIN')">
                             <a
                                     href="${pageContext.request.contextPath}/permission/findAll.do?page=1&size=5">
                                 <i class="fa fa-circle-o"></i> 资源权限管理
                             </a>
-                        </security:authorize>
                     </li>
                     <li id="system-setting4">
-                        <security:authorize access="hasRole('ADMIN')">
                             <a
                                     href="${pageContext.request.contextPath}/sysLog/findAll.do?page=1&size=5"> <i
                                     class="fa fa-circle-o"></i> 访问日志
                             </a>
-                        </security:authorize>
                     </li>
                 </ul>
 
@@ -77,20 +69,16 @@
                 <ul class="treeview-menu">
 
                     <li id="system-setting5">
-                        <security:authorize access="hasRole('USER')">
                             <a
-                                    href="${pageContext.request.contextPath}/product/findAll.do?page=1&size=5">
+                                    href="${pageContext.request.contextPath}/product/findAll.do?page=1&size=3">
                                 <i class="fa fa-circle-o"></i> 产品管理
                             </a>
-                        </security:authorize>
                     </li>
                     <li id="system-setting6">
-                        <security:authorize access="hasRole('USER')">
                             <a
-                                    href="${pageContext.request.contextPath}/order/findAll.do?page=1&size=5"> <i
+                                    href="${pageContext.request.contextPath}/order/findAll.do?page=1&size=3"> <i
                                     class="fa fa-circle-o"></i> 订单管理
                             </a>
-                        </security:authorize>
                     </li>
 
                 </ul>

@@ -1,5 +1,7 @@
 package com.hl.service.impl;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.hl.dao.ProductDao;
 import com.hl.domain.Product;
 import com.hl.service.ProductService;
@@ -16,8 +18,11 @@ public class ProductServiceDao implements ProductService {
     @Autowired
     private ProductDao productDao;
     @Override
-    public List<Product> findAll() throws Exception {
-        return productDao.findAll();
+    public PageInfo<Product> findAll(Integer page, Integer size) throws Exception {
+        PageHelper.startPage(page, size);
+        List<Product> all = productDao.findAll();
+        PageInfo<Product> pageInfo = new PageInfo<>(all);
+        return pageInfo;
     }
 
     @Override

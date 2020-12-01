@@ -167,20 +167,18 @@
 									</tr>
 								</thead>
 								<tbody>
-
-
-<%--									<c:forEach items="${pageInfo.list}" var="product">--%>
-									<c:forEach items="${productList}" var="product">
+<%--								<c:forEach items="${productList}" var="product">--%>
+									<c:forEach items="${pageInfo.list}" var="product">
 										<tr>
 											<td><input name="ids" type="checkbox"></td>
-											<td>${product.id }</td>
-											<td>${product.productNum }</td>
-											<td>${product.productName }</td>
-											<td>${product.cityName }</td>
-											<td>${product.departureTimeStr }</td>
-											<td class="text-center">${product.productPrice }</td>
-											<td>${product.productDesc }</td>
-											<td class="text-center">${product.productStatusStr }</td>
+											<td>${product.id}</td>
+											<td>${product.productNum}</td>
+											<td>${product.productName}</td>
+											<td>${product.cityName}</td>
+											<td>${product.departureTimeStr}</td>
+											<td class="text-center">${product.productPrice}</td>
+											<td>${product.productDesc}</td>
+											<td class="text-center">${product.productStatusStr}</td>
 											<td class="text-center">
 												<button type="button" class="btn bg-olive btn-xs"
 														onclick="location.href='${pageContext.request.contextPath}/product/findById.do?id=${product.id}'">详情</button>
@@ -213,7 +211,7 @@
 					<!-- /.box-body -->
 
 					<!-- .box-footer-->
-					<%--<div class="box-footer">
+					<div class="box-footer">
 						<div class="pull-left">
 							<div class="form-group form-inline">
 								总共 ${pageInfo.pages} 页，当前第 ${pageInfo.pageNum} 页，共 ${pageInfo.total} 条数据。 每页
@@ -243,7 +241,7 @@
 							</ul>
 						</div>
 
-					</div>--%>
+					</div>
 					<!-- /.box-footer-->
 
 

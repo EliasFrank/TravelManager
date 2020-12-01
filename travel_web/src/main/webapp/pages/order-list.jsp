@@ -162,9 +162,8 @@
 								</thead>
 								<tbody>
 
-<%--									<c:forEach items="${pageInfo.list}" var="order">--%>
-									<c:forEach items="${orders}" var="order">
-
+								<c:forEach items="${pageInfo.list}" var="order">
+<%--									<c:forEach items="${orders}" var="order">--%>
 										<tr>
 											<td><input name="ids" type="checkbox"></td>
 											<td>${order.id }</td>
@@ -205,7 +204,7 @@
 					<!-- /.box-body -->
 
 					<!-- .box-footer-->
-                <%--<div class="box-footer">
+                <div class="box-footer">
                     <div class="pull-left">
                         <div class="form-group form-inline">
                             总共 ${pageInfo.pages} 页，当前第 ${pageInfo.pageNum} 页，共 ${pageInfo.total} 条数据。 每页
@@ -235,7 +234,7 @@
                         </ul>
                     </div>
 
-                </div>--%>
+                </div>
                 <!-- /.box-footer-->
 
 

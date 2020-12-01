@@ -21,12 +21,21 @@ public class ProductController {
 
     @GetMapping("findAll.do")
 //    @ResponseBody
+    public ModelAndView findAll(Integer page, Integer size) throws Exception {
+        ModelAndView mv = new ModelAndView();
+        mv.addObject("pageInfo", productService.findAll(page, size));
+        mv.setViewName("product-list");
+        return mv;
+    }
+    /*查询所有订单，不分页
+    @GetMapping("findAll.do")
+    @ResponseBody
     public ModelAndView findAll() throws Exception {
         ModelAndView mv = new ModelAndView();
         mv.addObject("productList", productService.findAll());
         mv.setViewName("product-list");
         return mv;
-    }
+    }*/
 
     @PostMapping("save.do")
     public String addProduct(Product product){
