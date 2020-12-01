@@ -1,5 +1,7 @@
 package com.hl.domain;
 
+import com.hl.utils.DateUtils;
+
 import java.util.Date;
 import java.util.List;
 
@@ -12,7 +14,7 @@ public class Order {
     private Date orderTime;
     private String orderTimeStr;
     private int orderStatus;
-    //    private String orderStatusStr;
+    private String orderStatusStr;
     private int peopleCount;
     private Product product;
     private List<Traveller> travellers;
@@ -46,6 +48,9 @@ public class Order {
     }
 
     public String getOrderTimeStr() {
+        if(orderTime != null){
+            setOrderTimeStr(DateUtils.dateToString(getOrderTime(), "yyyy-MM-dd HH:mm"));
+        }
         return orderTimeStr;
     }
 
@@ -60,15 +65,18 @@ public class Order {
     public void setOrderStatus(int orderStatus) {
         this.orderStatus = orderStatus;
     }
-/*
     public String getOrderStatusStr() {
+        if(orderStatus == 0){
+            setOrderStatusStr("未支付");
+        }else if (orderStatus == 1){
+            setOrderStatusStr("已支付");
+        }
         return orderStatusStr;
     }
 
     public void setOrderStatusStr(String orderStatusStr) {
         this.orderStatusStr = orderStatusStr;
     }
-*/
 
     public int getPeopleCount() {
         return peopleCount;
@@ -111,6 +119,13 @@ public class Order {
     }
 
     public String getPayTypeStr() {
+        if (payType == 0){
+            setPayTypeStr("支付宝");
+        }else if (payType == 1){
+            setPayTypeStr("微信");
+        }else if (payType == 2){
+            setPayTypeStr("其他");
+        }
         return payTypeStr;
     }
 

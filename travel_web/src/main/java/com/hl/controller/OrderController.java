@@ -24,7 +24,7 @@ public class OrderController {
         List<Order> all = orderService.findAll();
         ModelAndView mv = new ModelAndView();
         mv.addObject("orders", all);
-        mv.setViewName("orders-list");
+        mv.setViewName("order-list");
         return mv;
     }
 }
