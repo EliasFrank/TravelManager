@@ -11,7 +11,6 @@ import java.util.List;
 /**
  * @author hl2333
  */
-@Repository
 public interface OrderDao {
     /**
      * 查询所有的订单
