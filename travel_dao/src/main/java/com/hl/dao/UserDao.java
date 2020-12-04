@@ -1,10 +1,7 @@
 package com.hl.dao;
 
 import com.hl.domain.UserInfo;
-import org.apache.ibatis.annotations.Many;
-import org.apache.ibatis.annotations.Result;
-import org.apache.ibatis.annotations.Results;
-import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.*;
 
 import java.util.List;
 
@@ -12,6 +9,14 @@ import java.util.List;
  * @author hl2333
  */
 public interface UserDao {
+
+    /**
+     * 向数据库保存用户信息
+     * @param userInfo 用户信息
+     */
+    @Insert("INSERT INTO ssm_travel.users (email, username, password, phoneNum, status) " +
+            "VALUES (#{email}, #{username}, #{password}, #{phoneNum}, #{status})")
+    public void save(UserInfo userInfo);
 
     @Select("select * from users")
     public List<UserInfo> findAll();

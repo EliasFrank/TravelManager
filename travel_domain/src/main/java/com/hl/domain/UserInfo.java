@@ -11,6 +11,10 @@ public class UserInfo {
     private String email;
     private String password;
     private String phoneNum;
+    /**
+     * 0 代表未开启
+     * 1 代表已开启
+     */
     private int status;
     private String statusStr;
     private List<Role> roles;
@@ -64,6 +68,7 @@ public class UserInfo {
     }
 
     public String getStatusStr() {
+        setStatusStr(status==0?"未开启":"已开启");
         return statusStr;
     }
 

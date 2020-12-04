@@ -5,6 +5,7 @@ import com.github.pagehelper.PageInfo;
 import com.hl.dao.UserDao;
 import com.hl.domain.UserInfo;
 import com.hl.service.UserService;
+import com.hl.utils.EncodePassword;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -20,6 +21,14 @@ public class UserServiceImpl implements UserService {
 
     @Autowired
     UserDao userDao;
+
+    @Override
+    public void save(UserInfo userInfo) {
+        userInfo.setPassword(
+                EncodePassword.encodePassword(
+                        userInfo.getPassword()));
+        userDao.save(userInfo);
+    }
 
     @Override
     public PageInfo findAll(int page, int size) {

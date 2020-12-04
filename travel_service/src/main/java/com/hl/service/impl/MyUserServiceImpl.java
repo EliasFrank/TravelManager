@@ -36,14 +36,15 @@ public class MyUserServiceImpl implements MyUserService {
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         UserInfo userInfo = userDao.findByName(username);
-//        String password = passwordEncoder.encode(userInfo.getPassword());
         List<GrantedAuthority> authorities = getAutorities(userInfo.getRoles());
 //                AuthorityUtils.commaSeparatedStringToAuthorityList("ROLE_USER, ROLE_ADMIN");
         User user = new User(userInfo.getUsername(),
-                "{noop}" + userInfo.getPassword(),
+                userInfo.getPassword(),
                 userInfo.getStatus()==0?false:true,
                 true,true,true,
                 authorities);
+        System.out.println(user);
+        System.out.println(user.getPassword());
         return user;
     }
 
