@@ -1,10 +1,7 @@
 package com.hl.dao;
 
 import com.hl.domain.Role;
-import org.apache.ibatis.annotations.Many;
-import org.apache.ibatis.annotations.Result;
-import org.apache.ibatis.annotations.Results;
-import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.*;
 
 import java.util.List;
 
@@ -13,6 +10,12 @@ import java.util.List;
  */
 public interface RoleDao {
 
+    /**
+     * 查询所有的角色信息
+     * @return 所有的角色信息
+     */
+    @Select("select * from role")
+    List<Role> findAll();
     /**
      * 根据用户编号查询用户所有权限
      * @param userId 用户编号
@@ -39,4 +42,13 @@ public interface RoleDao {
             )
     })
     public List<Role> findRolesDetailByUserId(String userId);
+
+    /**
+     * 添加角色信息
+     * @param role 角色信息
+     */
+    @Insert("INSERT INTO ssm_travel.role " +
+            "(roleName, roleDesc) " +
+            "VALUES (#{roleName}, #{roleDesc})")
+    void save(Role role);
 }
