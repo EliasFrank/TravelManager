@@ -21,4 +21,11 @@ public interface UserService {
      * @param userInfo 用户信息
      */
     public void save(UserInfo userInfo);
+
+    /**
+     * 根据用户id查询用户的详细信息
+     * @param id 用户id
+     * @return 用户的详细信息
+     */
+    UserInfo findById(String id);
 }

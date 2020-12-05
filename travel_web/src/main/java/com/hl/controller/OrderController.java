@@ -23,10 +23,9 @@ public class OrderController {
     @GetMapping("findAll.do")
     public ModelAndView findAll(Integer page, Integer size){
         PageInfo<Order> pageInfo = orderService.findAll(page, size);
-        ModelAndView mv = new ModelAndView();
+        ModelAndView mv=new ModelAndView();
         mv.addObject("pageInfo", pageInfo);
-        mv.setViewName("order-list");
-        return mv;
+        mv.setViewName("order-list");return mv;
     }
 
     @RequestMapping("findById.do")

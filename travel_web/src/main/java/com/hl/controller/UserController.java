@@ -19,6 +19,14 @@ public class UserController {
     @Autowired
     UserService userService;
 
+    @RequestMapping("findById.do")
+    public ModelAndView findById(String id){
+        ModelAndView modelAndView = new ModelAndView();
+        UserInfo userInfo = userService.findById(id);
+        modelAndView.setViewName("user-show");
+        modelAndView.addObject("user", userInfo);
+        return modelAndView;
+    }
     @RequestMapping("save.do")
     public String save(UserInfo userInfo){
         userService.save(userInfo);

@@ -5,7 +5,7 @@ import java.util.List;
 /**
  * @author hl2333
  */
-public class Role {
+public class  Role {
     private String id;
     private String roleName;
     private String roleDesc;

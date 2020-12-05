@@ -40,4 +40,25 @@ public interface UserDao {
             )
     })
     UserInfo findByName(String username);
+
+    /**
+     * 根据用户id查询到用户的详细信息
+     * @param userId 用户id
+     * @return 用户的详细信息
+     */
+    @Select("select * from users where id=#{id}")
+    @Results({
+            @Result(id = true, column = "id"),
+            @Result(property = "username", column = "username"),
+            @Result(property = "email", column = "email"),
+            @Result(property = "password", column = "password"),
+            @Result(property = "phoneNum", column = "phoneNum"),
+            @Result(property = "status", column = "status"),
+            @Result(property = "roles",
+                    javaType = java.util.List.class,
+                    column = "id",
+                    many = @Many(select = "com.hl.dao.RoleDao.findRolesDetailByUserId")
+            )
+    })
+    UserInfo findById(String userId);
 }

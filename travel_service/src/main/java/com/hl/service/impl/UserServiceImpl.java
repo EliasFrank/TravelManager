@@ -23,6 +23,11 @@ public class UserServiceImpl implements UserService {
     UserDao userDao;
 
     @Override
+    public UserInfo findById(String id) {
+        return userDao.findById(id);
+    }
+
+    @Override
     public void save(UserInfo userInfo) {
         userInfo.setPassword(
                 EncodePassword.encodePassword(
