@@ -51,4 +51,28 @@ public interface RoleDao {
             "(roleName, roleDesc) " +
             "VALUES (#{roleName}, #{roleDesc})")
     void save(Role role);
+
+    /**
+     * 查找角色详细信息
+     * @param id 角色id
+     * @return 角色详细信息
+     */
+    @Select("SELECT * FROM role where id=#{id}")
+    @Results({
+            @Result(id = true, column = "id"),
+            @Result(column = "roleName", property = "roleName"),
+            @Result(column = "roleDesc", property = "roleDesc"),
+            @Result(column = "id", property = "permissions",
+                    javaType = java.util.List.class,
+                    many = @Many(select = "com.hl.dao.PermissionDao.findPermissionById")
+            )
+    })
+    Role findById(String id);
+
+    /**
+     * 根据用户id删除用户信息
+     * @param id 用户的id
+     */
+    @Delete("DELETE FROM ssm_travel.role WHERE id = #{id}")
+    void deleteRole(String id);
 }

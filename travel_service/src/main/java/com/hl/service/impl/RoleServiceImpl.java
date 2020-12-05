@@ -3,6 +3,7 @@ package com.hl.service.impl;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.hl.dao.RoleDao;
+import com.hl.domain.Permission;
 import com.hl.domain.Role;
 import com.hl.service.RoleService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +18,16 @@ import java.util.List;
 public class RoleServiceImpl implements RoleService {
     @Autowired
     private RoleDao roleDao;
+
+    @Override
+    public void deleteRole(String id) {
+        roleDao.deleteRole(id);
+    }
+
+    @Override
+    public Role findById(String id) {
+        return roleDao.findById(id);
+    }
 
     @Override
     public void save(Role role) {

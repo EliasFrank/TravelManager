@@ -18,6 +18,18 @@ public class RoleController {
     @Autowired
     RoleService roleService;
 
+    @RequestMapping("deleteRole.do")
+    public String delete(String id){
+        roleService.deleteRole(id);
+        return "redirect:findAll.do";
+    }
+    @RequestMapping("findById.do")
+    public ModelAndView findById(String id){
+        ModelAndView mv = new ModelAndView("role-show");
+        Role role = roleService.findById(id);
+        mv.addObject("role", role);
+        return mv;
+    }
     @RequestMapping("findAll.do")
     public ModelAndView findAll(@RequestParam(defaultValue = "0")Integer page,
                                 @RequestParam(defaultValue = "5")Integer size){

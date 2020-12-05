@@ -1,7 +1,10 @@
 package com.hl.service;
 
 import com.github.pagehelper.PageInfo;
+import com.hl.domain.Permission;
 import com.hl.domain.Role;
+
+import java.util.List;
 
 /**
  * @author hl2333
@@ -20,4 +23,17 @@ public interface RoleService {
      * @param role 角色信息
      */
     void save(Role role);
+
+    /**
+     * 根据用户id查询所有的权限
+     * @param id 角色id
+     * @return 查询角色所具有的全部权限
+     */
+    Role findById(String id);
+
+    /**
+     * 根据用户id删除用户
+     * @param id 用户id
+     */
+    void deleteRole(String id);
 }
