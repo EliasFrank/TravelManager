@@ -7,6 +7,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.annotation.security.DenyAll;
+import javax.annotation.security.PermitAll;
+import javax.annotation.security.RolesAllowed;
 import java.util.List;
 
 /**
@@ -20,8 +23,11 @@ public class ProductController {
     private ProductService productService;
 
     @GetMapping("findAll.do")
+    @RolesAllowed("ADMIN")
 //    @ResponseBody
-    public ModelAndView findAll(Integer page, Integer size) throws Exception {
+//    @DenyAll
+    public ModelAndView findAll(@RequestParam(defaultValue = "1") Integer page,
+                                @RequestParam(defaultValue = "4") Integer size) throws Exception {
         ModelAndView mv = new ModelAndView();
         mv.addObject("pageInfo", productService.findAll(page, size));
         mv.setViewName("product-list");

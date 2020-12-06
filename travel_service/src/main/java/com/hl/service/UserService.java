@@ -1,7 +1,10 @@
 package com.hl.service;
 
 import com.github.pagehelper.PageInfo;
+import com.hl.domain.Role;
 import com.hl.domain.UserInfo;
+
+import java.util.List;
 
 /**
  * @author hl2333
@@ -28,4 +31,18 @@ public interface UserService {
      * @return 用户的详细信息
      */
     UserInfo findById(String id);
+
+    /**
+     * 根据用户id查询可添加的权限信息
+     * @param id 用户id
+     * @return 可添加的权限信息
+     */
+    List<Role> findRoles(String id);
+
+    /**
+     * 给指定id的用户添加一系列的权限
+     * @param ids 权限的编号
+     * @param userId 用户id
+     */
+    void addRole(Integer[] ids, Integer userId);
 }

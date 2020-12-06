@@ -1,5 +1,6 @@
 package com.hl.dao;
 
+import com.hl.domain.Role;
 import com.hl.domain.UserInfo;
 import org.apache.ibatis.annotations.*;
 
@@ -10,6 +11,14 @@ import java.util.List;
  */
 public interface UserDao {
 
+    /**
+     * 根据用户id查询用户可添加的权限
+     * @param id 用户id
+     * @return 用户可添加的权限
+     */
+    @Select("select * from role where id not in " +
+            "(select roleId from users_role where userId = #{id})")
+    List<Role> findRoles(String id);
     /**
      * 向数据库保存用户信息
      * @param userInfo 用户信息
@@ -61,4 +70,13 @@ public interface UserDao {
             )
     })
     UserInfo findById(String userId);
+
+    /**
+     * 向给用户添加角色
+     * @param i 角色的id
+     * @param userId 用户的id
+     */
+    @Insert("INSERT INTO ssm_travel.users_role " +
+            "(userId, roleId) VALUES (#{param2}, #{param1})")
+    void addRoles(Integer i, Integer userId);
 }

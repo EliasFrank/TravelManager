@@ -10,6 +10,13 @@ import java.util.List;
  * @author hl2333
  */
 public interface RoleService {
+
+    /**
+     * 根据角色信息查询出可以添加的权限
+     * @param id 角色id
+     * @return 权限
+     */
+    List<Permission> findPermissions(String id);
     /**
      * 查询所有的角色信息
      * @return 所有的角色信息
@@ -36,4 +43,11 @@ public interface RoleService {
      * @param id 用户id
      */
     void deleteRole(String id);
+
+    /**
+     * 给角色添加权限
+     * @param ids 需要添加的权限
+     * @param roleId 角色id
+     */
+    void addPermission(String[] ids, String roleId);
 }

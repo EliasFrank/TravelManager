@@ -4,6 +4,7 @@ import com.github.pagehelper.PageInfo;
 import com.hl.domain.Order;
 import com.hl.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,6 +22,7 @@ public class OrderController {
     private OrderService orderService;
 
     @GetMapping("findAll.do")
+    @Secured("ROLE_ADMIN")
     public ModelAndView findAll(Integer page, Integer size){
         PageInfo<Order> pageInfo = orderService.findAll(page, size);
         ModelAndView mv=new ModelAndView();

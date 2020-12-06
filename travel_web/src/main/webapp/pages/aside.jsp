@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"  isELIgnored="false" %>
-<%@taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
+<%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
 <aside class="main-sidebar">
     <!-- sidebar: style can be found in sidebar.less -->
     <section class="sidebar">
@@ -32,7 +32,7 @@
                     </span>
 
                 </a>
-
+                <security:authorize access="hasRole('ROLE_ADMIN')">
                 <ul class="treeview-menu">
                     <li id="system-setting1">
                             <a
@@ -59,7 +59,7 @@
                             </a>
                     </li>
                 </ul>
-
+                </security:authorize>
             </li>
             <li class="treeview"><a href="#"> <i class="fa fa-cube"></i>
                 <span>基础数据</span> <span class="pull-right-container"> <i

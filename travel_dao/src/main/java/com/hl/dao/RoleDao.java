@@ -1,5 +1,6 @@
 package com.hl.dao;
 
+import com.hl.domain.Permission;
 import com.hl.domain.Role;
 import org.apache.ibatis.annotations.*;
 
@@ -10,6 +11,24 @@ import java.util.List;
  */
 public interface RoleDao {
 
+    /**
+     * 给角色添加权限
+     * @param roleId 角色id
+     * @param id 权限id
+     */
+    @Insert("INSERT INTO ssm_travel.role_permission " +
+            "(permissionId, roleId) " +
+            "VALUES (#{id}, #{roleId})")
+    void addPermission(@Param("roleId") String roleId,
+                       @Param("id") String id);
+    /**
+     * 根据角色id查询角色可以添加的权限
+     * @param id 角色id
+     * @return 角色可以添加的权限
+     */
+    @Select("select * from permission where id not in" +
+            " (select permissionId from role_permission where roleId = #{id})")
+    List<Permission> findPermission(String id);
     /**
      * 查询所有的角色信息
      * @return 所有的角色信息

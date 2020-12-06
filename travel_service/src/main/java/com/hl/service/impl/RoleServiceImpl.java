@@ -20,6 +20,19 @@ public class RoleServiceImpl implements RoleService {
     private RoleDao roleDao;
 
     @Override
+    public void addPermission(String[] ids, String roleId) {
+        for (String s :
+                ids) {
+            roleDao.addPermission(roleId, s);
+        }
+    }
+
+    @Override
+    public List<Permission> findPermissions(String id) {
+       return  roleDao.findPermission(id);
+    }
+
+    @Override
     public void deleteRole(String id) {
         roleDao.deleteRole(id);
     }
