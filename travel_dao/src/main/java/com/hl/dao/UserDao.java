@@ -3,12 +3,14 @@ package com.hl.dao;
 import com.hl.domain.Role;
 import com.hl.domain.UserInfo;
 import org.apache.ibatis.annotations.*;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
 /**
  * @author hl2333
  */
+@Repository
 public interface UserDao {
 
     /**

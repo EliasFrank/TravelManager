@@ -10,6 +10,7 @@ import java.util.List;
 /**
  * @author hl2333
  */
+@Repository
 public interface ProductDao {
     /**
      * 查询所有的产品信息

@@ -7,6 +7,7 @@ import org.springframework.stereotype.Repository;
 /**
  * @author hl2333
  */
+@Repository
 public interface MemberDao {
 
     /**

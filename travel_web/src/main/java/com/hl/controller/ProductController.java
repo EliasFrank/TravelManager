@@ -22,7 +22,7 @@ public class ProductController {
     @Autowired
     private ProductService productService;
 
-    @GetMapping("findAll.do")
+    @RequestMapping("findAll.do")
     @RolesAllowed("ADMIN")
 //    @ResponseBody
 //    @DenyAll

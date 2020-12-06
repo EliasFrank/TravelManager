@@ -21,7 +21,7 @@ public class OrderController {
     @Autowired
     private OrderService orderService;
 
-    @GetMapping("findAll.do")
+    @RequestMapping("findAll.do")
     @Secured("ROLE_ADMIN")
     public ModelAndView findAll(Integer page, Integer size){
         PageInfo<Order> pageInfo = orderService.findAll(page, size);
